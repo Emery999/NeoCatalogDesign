@@ -25,7 +25,7 @@ Requires `Python >= 3.9`
 1. Install dependencies from `requirements.txt`. For instance:
    1. Create virtualenv: `python3 -m venv venv`
    2. Activate `source venv/bin/activate`
-   3. Run `pip install -f requirements.txt`
+   3. Run `pip install -r requirements.txt`
 2. Open [`./main.py`](main.py) and see instructions there
 3. Run `python main.py`
 
@@ -42,3 +42,14 @@ MATCH (n:Product) DETACH DELETE n
 MATCH (n:CategoryV2) DETACH DELETE n
 MATCH (n:ProductV2) DETACH DELETE n
 ```
+
+## Limitations and remaining questions
+
+- No performance check
+- In approach 1 (attr in neo):
+  - How to add constraints on attributes? (e.g.: weight < 10kg)
+  - How to make sure attribute was not renamed before accessing its value in code (business logic)?
+  - How to deal with attribute change (schema migration)?
+- In approach 2 (attr in code):
+  - How to model category-based constraints? (e.g.: CPU frequency required for products in 'Computers' category)
+  - How to deal with the potentially large amount of attributes for a product? (most of them are nulls for each product)

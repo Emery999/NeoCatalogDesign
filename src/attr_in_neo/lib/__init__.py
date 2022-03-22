@@ -3,7 +3,7 @@ by checking the provided attributes match the
 expected ones depending on product category.
 """
 import random
-from typing import Optional
+from typing import Optional, Any
 from neomodel import db
 
 from src.attr_in_neo.models import Attribute, Category, Product
@@ -158,3 +158,41 @@ def create_product(
     # and connect it to its category
     p.category.connect(category)
     return p
+
+
+# ===============
+# Some functions demonstrating the coupling
+# between db content and code
+# ===============
+
+def get_product_attribute_value(
+        product: Product,
+        attribute_name: str,
+        default_value: Any = None,
+) -> Any:
+    """Example function to retrieve a product attribute value,
+    making sure the attribute name is a possible value for the
+    product's category.
+    """
+    product_cat = product.category.all()[0]
+    cat_attributes = attributes_to_define(product_cat)
+    if attribute_name not in [a["name"] for a in cat_attributes]:
+        raise ValueError(
+            f"Attribute '{attribute_name}' is not a valid name "
+            f"for category={product_cat}"
+        )
+    return getattr(product, attribute_name, default_value)
+
+
+def get_products_price(product_list: list[tuple[Product, int]]):
+    """Compute total price for a list of products
+
+    :param product_list: list of (product, quantity) tuples
+    """
+    return sum(
+        # what if the "Price" attribute is renamed?
+        # does that mean that we have to write tests against
+        # a similar db?
+        get_product_attribute_value(product, "Price", 0) * quantity
+        for product, quantity in product_list
+    )
