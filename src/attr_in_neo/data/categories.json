@@ -1,0 +1,71 @@
+[
+    {
+        "name": "Products",
+        "super": null
+    },
+    {
+        "name": "Electronics",
+        "super": "Products",
+        "attributes": [
+            {
+                "attr_name": "Name",
+                "name": "Name",
+                "required": true
+            },
+            {
+                "attr_name": "Currency",
+                "name": "Price",
+                "required": true
+            },
+            {
+                "attr_name": "Weight",
+                "name": "Weight",
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "Cameras",
+        "super": "Electronics"
+    },
+    {
+        "name": "Computers",
+        "super": "Electronics",
+        "attributes": [
+            {
+                "attr_name": "Weight",
+                "name": "Shipping weight",
+                "required": true
+            },
+            {
+                "attr_name": "Frequency",
+                "name": "CPU frequency",
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "Laptops",
+        "super": "Computers",
+        "attributes": [
+            {
+                "attr_name": "Length",
+                "name": "Display size",
+                "required": true,
+                "default_value": 15.0
+            }
+        ]
+    },
+    {
+        "name": "Desktop",
+        "super": "Computers",
+        "attributes": [
+            {
+                "attr_name": "Count",
+                "name": "Expansion slots",
+                "required": true,
+                "default_value": 4
+            }
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Name",
+        "unit": null
+    },
+    {
+        "name": "Currency",
+        "unit": "US_DOLLAR"
+    },
+    {
+        "name": "Weight",
+        "unit": "KILOGRAM"
+    },
+    {
+        "name": "Frequency",
+        "unit": "MHZ"
+    },
+    {
+        "name": "Count",
+        "unit": "PIECE"
+    },
+    {
+        "name": "Length",
+        "unit": "INCH"
+    }
+]

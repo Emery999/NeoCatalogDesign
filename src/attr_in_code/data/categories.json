@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Products",
+        "super": null
+    },
+    {
+        "name": "Electronics",
+        "super": "Products"
+    },
+    {
+        "name": "Cameras",
+        "super": "Electronics"
+    },
+    {
+        "name": "Computers",
+        "super": "Electronics"
+    },
+    {
+        "name": "Laptops",
+        "super": "Computers"
+    },
+    {
+        "name": "Desktop",
+        "super": "Computers"
+    }
+]
